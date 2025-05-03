@@ -1,0 +1,22 @@
+{
+  "name": "ehsanmoradi/basalam-sdk",
+  "description": "A PHP SDK for Basalam API with versioning support.",
+  "type": "library",
+  "license": "MIT",
+  "require": {
+    "php": "^8.1",
+    "guzzlehttp/guzzle": "^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Basalam\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Basalam\\BasalamServiceProvider"
+      ]
+    }
+  }
+}
