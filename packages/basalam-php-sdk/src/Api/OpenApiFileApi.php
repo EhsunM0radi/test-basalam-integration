@@ -33,6 +33,7 @@ use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Psr7\Utils;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -166,7 +167,6 @@ class OpenApiFileApi
     public function createFileV3FilesPostWithHttpInfo($authorization, $file, $file_type, $custom_unique_name = null, $expire_minutes = null, string $contentType = self::contentTypes['createFileV3FilesPost'][0])
     {
         $request = $this->createFileV3FilesPostRequest($authorization, $file, $file_type, $custom_unique_name, $expire_minutes, $contentType);
-
         try {
             $options = $this->createHttpClientOption();
             try {
@@ -205,7 +205,7 @@ class OpenApiFileApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -244,7 +244,7 @@ class OpenApiFileApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -344,109 +344,186 @@ class OpenApiFileApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createFileV3FilesPostRequest($authorization, $file, $file_type, $custom_unique_name = null, $expire_minutes = null, string $contentType = self::contentTypes['createFileV3FilesPost'][0])
-    {
+    // public function createFileV3FilesPostRequest($authorization, $file, $file_type, $custom_unique_name = null, $expire_minutes = null, string $contentType = self::contentTypes['createFileV3FilesPost'][0])
+    // {
 
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $authorization when calling createFileV3FilesPost'
-            );
+    //     // verify the required parameter 'authorization' is set
+    //     if ($authorization === null || (is_array($authorization) && count($authorization) === 0)) {
+    //         throw new \InvalidArgumentException(
+    //             'Missing the required parameter $authorization when calling createFileV3FilesPost'
+    //         );
+    //     }
+
+    //     // verify the required parameter 'file' is set
+    //     if ($file === null || (is_array($file) && count($file) === 0)) {
+    //         throw new \InvalidArgumentException(
+    //             'Missing the required parameter $file when calling createFileV3FilesPost'
+    //         );
+    //     }
+
+    //     // verify the required parameter 'file_type' is set
+    //     if ($file_type === null || (is_array($file_type) && count($file_type) === 0)) {
+    //         throw new \InvalidArgumentException(
+    //             'Missing the required parameter $file_type when calling createFileV3FilesPost'
+    //         );
+    //     }
+
+
+
+
+    //     $resourcePath = '/v3/files';
+    //     $formParams = [];
+    //     $queryParams = [];
+    //     $headerParams = [];
+    //     $httpBody = '';
+    //     $multipart = false;
+
+
+    //     // header params
+    //     if ($authorization !== null) {
+    //         $headerParams['authorization'] = ObjectSerializer::toHeaderValue($authorization);
+    //     }
+
+
+    //     // form params
+    //     $formDataProcessor = new FormDataProcessor();
+
+    //     $formData = $formDataProcessor->prepare([
+    //         'file' => $file,
+    //         'file_type' => $file_type,
+    //         'custom_unique_name' => $custom_unique_name,
+    //         'expire_minutes' => $expire_minutes,
+    //     ]);
+
+    //     $formParams = $formDataProcessor->flatten($formData);
+    //     $multipart = $formDataProcessor->has_file;
+
+    //     $multipart = true;
+    //     $headers = $this->headerSelector->selectHeaders(
+    //         ['application/json', ],
+    //         $contentType,
+    //         $multipart
+    //     );
+
+    //     // for model (json/xml)
+    //     if (count($formParams) > 0) {
+    //         if ($multipart) {
+    //             $multipartContents = [];
+    //             foreach ($formParams as $formParamName => $formParamValue) {
+    //                 $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    // foreach ($formParamValueItems as $formParamValueItem) {
+                    //     $multipartContents[] = [
+                    //         'name' => $formParamName,
+                    //         'contents' => $formParamValueItem,
+                    //         'filename' => $formParamName === 'file' ? 'upload.jpg' : null
+                    //     ];
+                    // }
+    //             }
+    //             // for HTTP post (form)
+    //             $httpBody = new MultipartStream($multipartContents);
+
+    //         } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+    //             # if Content-Type contains "application/json", json_encode the form parameters
+    //             $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+    //         } else {
+    //             // for HTTP post (form)
+    //             $httpBody = ObjectSerializer::buildQuery($formParams);
+    //         }
+    //     }
+
+
+    //     $defaultHeaders = [];
+    //     if ($this->config->getUserAgent()) {
+    //         $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+    //     }
+
+    //     $headers = array_merge(
+    //         $defaultHeaders,
+    //         $headerParams,
+    //         $headers
+    //     );
+
+    //     $operationHost = $this->config->getHost();
+    //     $query = ObjectSerializer::buildQuery($queryParams);
+    //     return new Request(
+    //         'POST',
+    //         $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+    //         $headers,
+    //         $httpBody
+    //     );
+    // }
+
+    public function createFileV3FilesPostRequest(
+        $authorization,
+        $file,
+        $file_type,
+        $custom_unique_name = null,
+        $expire_minutes = null,
+        string $contentType = self::contentTypes['createFileV3FilesPost'][0]
+    ) {
+        if (!$authorization) {
+            throw new \InvalidArgumentException('Missing authorization');
         }
-
-        // verify the required parameter 'file' is set
-        if ($file === null || (is_array($file) && count($file) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $file when calling createFileV3FilesPost'
-            );
+        if (!$file) {
+            throw new \InvalidArgumentException('Missing file');
         }
-
-        // verify the required parameter 'file_type' is set
-        if ($file_type === null || (is_array($file_type) && count($file_type) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $file_type when calling createFileV3FilesPost'
-            );
+        if (!$file_type) {
+            throw new \InvalidArgumentException('Missing file_type');
         }
-
-
-
 
         $resourcePath = '/v3/files';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // header params
-        if ($authorization !== null) {
-            $headerParams['authorization'] = ObjectSerializer::toHeaderValue($authorization);
-        }
-
-
-        // form params
-        $formDataProcessor = new FormDataProcessor();
-
-        $formData = $formDataProcessor->prepare([
-            'file' => $file,
-            'file_type' => $file_type,
-            'custom_unique_name' => $custom_unique_name,
-            'expire_minutes' => $expire_minutes,
-        ]);
-
-        $formParams = $formDataProcessor->flatten($formData);
-        $multipart = $formDataProcessor->has_file;
-
         $multipart = true;
-        $headers = $this->headerSelector->selectHeaders(
-            ['application/json', ],
-            $contentType,
-            $multipart
-        );
+        $formParams = [];
 
-        // for model (json/xml)
-        if (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
-                    foreach ($formParamValueItems as $formParamValueItem) {
-                        $multipartContents[] = [
-                            'name' => $formParamName,
-                            'contents' => $formParamValueItem
-                        ];
-                    }
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
-                # if Content-Type contains "application/json", json_encode the form parameters
-                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
-            } else {
-                // for HTTP post (form)
-                $httpBody = ObjectSerializer::buildQuery($formParams);
-            }
+        if (is_string($file)) {
+            $file = Utils::tryFopen($file, 'r');
         }
 
+        $stream = Utils::streamFor($file);
 
-        $defaultHeaders = [];
+        $multipartContents = [
+            [
+                'name'     => 'file',
+                'contents' => $stream,
+                'filename' => 'upload.jpg',
+                'headers'  => [
+                    'Content-Type' => 'image/jpeg',
+                ],
+            ],
+            [
+                'name'     => 'file_type',
+                'contents' => is_object($file_type) ? (string) $file_type : $file_type,
+            ]
+        ];
+
+        if ($custom_unique_name !== null) {
+            $multipartContents[] = [
+                'name'     => 'custom_unique_name',
+                'contents' => $custom_unique_name
+            ];
+        }
+
+        if ($expire_minutes !== null) {
+            $multipartContents[] = [
+                'name'     => 'expire_minutes',
+                'contents' => $expire_minutes
+            ];
+        }
+
+        $headers = $this->headerSelector->selectHeaders(['application/json'], $contentType, $multipart);
+
+        $headers['authorization'] = ObjectSerializer::toHeaderValue($authorization);
+
         if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+            $headers['User-Agent'] = $this->config->getUserAgent();
         }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
 
         $operationHost = $this->config->getHost();
-        $query = ObjectSerializer::buildQuery($queryParams);
+        $httpBody = new MultipartStream($multipartContents);
+
         return new Request(
             'POST',
-            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $operationHost . $resourcePath,
             $headers,
             $httpBody
         );
