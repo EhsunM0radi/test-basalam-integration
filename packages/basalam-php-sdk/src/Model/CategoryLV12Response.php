@@ -26,10 +26,10 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace BasalamSDK\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \BasalamSDK\ObjectSerializer;
 
 /**
  * CategoryLV12Response Class Doc Comment
@@ -59,8 +59,8 @@ class CategoryLV12Response implements ModelInterface, ArrayAccess, \JsonSerializ
     protected static $openAPITypes = [
         'id' => 'int',
         'title' => 'string',
-        'children' => '\OpenAPI\Client\Model\CategoryLV12Response[]',
-        'unit_type' => '\OpenAPI\Client\Model\UnitTypeResponse'
+        'children' => '\BasalamSDK\Model\CategoryLV12Response[]',
+        'unit_type' => '\BasalamSDK\Model\UnitTypeResponse'
     ];
 
     /**
@@ -373,7 +373,7 @@ class CategoryLV12Response implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets children
      *
-     * @return \OpenAPI\Client\Model\CategoryLV12Response[]|null
+     * @return \BasalamSDK\Model\CategoryLV12Response[]|null
      */
     public function getChildren()
     {
@@ -383,7 +383,7 @@ class CategoryLV12Response implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets children
      *
-     * @param \OpenAPI\Client\Model\CategoryLV12Response[]|null $children children
+     * @param \BasalamSDK\Model\CategoryLV12Response[]|null $children children
      *
      * @return self
      */
@@ -407,7 +407,7 @@ class CategoryLV12Response implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Gets unit_type
      *
-     * @return \OpenAPI\Client\Model\UnitTypeResponse|null
+     * @return \BasalamSDK\Model\UnitTypeResponse|null
      */
     public function getUnitType()
     {
@@ -417,7 +417,7 @@ class CategoryLV12Response implements ModelInterface, ArrayAccess, \JsonSerializ
     /**
      * Sets unit_type
      *
-     * @param \OpenAPI\Client\Model\UnitTypeResponse|null $unit_type unit_type
+     * @param \BasalamSDK\Model\UnitTypeResponse|null $unit_type unit_type
      *
      * @return self
      */

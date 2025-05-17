@@ -138,9 +138,9 @@ class V3CategoryApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readCategoriesV3CategoriesGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \BasalamSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CategoriesResponse
+     * @return \BasalamSDK\Model\CategoriesResponse
      */
     public function readCategoriesV3CategoriesGet(string $contentType = self::contentTypes['readCategoriesV3CategoriesGet'][0])
     {
@@ -155,9 +155,9 @@ class V3CategoryApi
      *
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readCategoriesV3CategoriesGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \BasalamSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CategoriesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BasalamSDK\Model\CategoriesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function readCategoriesV3CategoriesGetWithHttpInfo(string $contentType = self::contentTypes['readCategoriesV3CategoriesGet'][0])
     {
@@ -189,7 +189,7 @@ class V3CategoryApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\CategoriesResponse',
+                        '\BasalamSDK\Model\CategoriesResponse',
                         $request,
                         $response,
                     );
@@ -211,7 +211,7 @@ class V3CategoryApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\CategoriesResponse',
+                '\BasalamSDK\Model\CategoriesResponse',
                 $request,
                 $response,
             );
@@ -220,7 +220,7 @@ class V3CategoryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CategoriesResponse',
+                        '\BasalamSDK\Model\CategoriesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -264,7 +264,7 @@ class V3CategoryApi
      */
     public function readCategoriesV3CategoriesGetAsyncWithHttpInfo(string $contentType = self::contentTypes['readCategoriesV3CategoriesGet'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\CategoriesResponse';
+        $returnType = '\BasalamSDK\Model\CategoriesResponse';
         $request = $this->readCategoriesV3CategoriesGetRequest($contentType);
 
         return $this->client
@@ -390,9 +390,9 @@ class V3CategoryApi
      * @param  bool|null $exclude_multi_selects exclude_multi_selects (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readCategoryAttributeV3CategoriesCategoryIdAttributesGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \BasalamSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\AttributesResponse|\OpenAPI\Client\Model\HTTPValidationError
+     * @return \BasalamSDK\Model\AttributesResponse|\BasalamSDK\Model\HTTPValidationError
      */
     public function readCategoryAttributeV3CategoriesCategoryIdAttributesGet($category_id, $product_id = null, $vendor_id = null, $exclude_multi_selects = null, string $contentType = self::contentTypes['readCategoryAttributeV3CategoriesCategoryIdAttributesGet'][0])
     {
@@ -411,9 +411,9 @@ class V3CategoryApi
      * @param  bool|null $exclude_multi_selects (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readCategoryAttributeV3CategoriesCategoryIdAttributesGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \BasalamSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\AttributesResponse|\OpenAPI\Client\Model\HTTPValidationError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BasalamSDK\Model\AttributesResponse|\BasalamSDK\Model\HTTPValidationError, HTTP status code, HTTP response headers (array of strings)
      */
     public function readCategoryAttributeV3CategoriesCategoryIdAttributesGetWithHttpInfo($category_id, $product_id = null, $vendor_id = null, $exclude_multi_selects = null, string $contentType = self::contentTypes['readCategoryAttributeV3CategoriesCategoryIdAttributesGet'][0])
     {
@@ -445,13 +445,13 @@ class V3CategoryApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\AttributesResponse',
+                        '\BasalamSDK\Model\AttributesResponse',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\HTTPValidationError',
+                        '\BasalamSDK\Model\HTTPValidationError',
                         $request,
                         $response,
                     );
@@ -473,7 +473,7 @@ class V3CategoryApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\AttributesResponse',
+                '\BasalamSDK\Model\AttributesResponse',
                 $request,
                 $response,
             );
@@ -482,7 +482,7 @@ class V3CategoryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\AttributesResponse',
+                        '\BasalamSDK\Model\AttributesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -490,7 +490,7 @@ class V3CategoryApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\HTTPValidationError',
+                        '\BasalamSDK\Model\HTTPValidationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -542,7 +542,7 @@ class V3CategoryApi
      */
     public function readCategoryAttributeV3CategoriesCategoryIdAttributesGetAsyncWithHttpInfo($category_id, $product_id = null, $vendor_id = null, $exclude_multi_selects = null, string $contentType = self::contentTypes['readCategoryAttributeV3CategoriesCategoryIdAttributesGet'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\AttributesResponse';
+        $returnType = '\BasalamSDK\Model\AttributesResponse';
         $request = $this->readCategoryAttributeV3CategoriesCategoryIdAttributesGetRequest($category_id, $product_id, $vendor_id, $exclude_multi_selects, $contentType);
 
         return $this->client
@@ -714,9 +714,9 @@ class V3CategoryApi
      * @param  int $category_id category_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readCategoryV3CategoriesCategoryIdGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \BasalamSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\CategoryLV12Response|\OpenAPI\Client\Model\HTTPValidationError
+     * @return \BasalamSDK\Model\CategoryLV12Response|\BasalamSDK\Model\HTTPValidationError
      */
     public function readCategoryV3CategoriesCategoryIdGet($category_id, string $contentType = self::contentTypes['readCategoryV3CategoriesCategoryIdGet'][0])
     {
@@ -732,9 +732,9 @@ class V3CategoryApi
      * @param  int $category_id (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['readCategoryV3CategoriesCategoryIdGet'] to see the possible values for this operation
      *
-     * @throws \OpenAPI\Client\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \BasalamSDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\CategoryLV12Response|\OpenAPI\Client\Model\HTTPValidationError, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \BasalamSDK\Model\CategoryLV12Response|\BasalamSDK\Model\HTTPValidationError, HTTP status code, HTTP response headers (array of strings)
      */
     public function readCategoryV3CategoriesCategoryIdGetWithHttpInfo($category_id, string $contentType = self::contentTypes['readCategoryV3CategoriesCategoryIdGet'][0])
     {
@@ -766,13 +766,13 @@ class V3CategoryApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\CategoryLV12Response',
+                        '\BasalamSDK\Model\CategoryLV12Response',
                         $request,
                         $response,
                     );
                 case 422:
                     return $this->handleResponseWithDataType(
-                        '\OpenAPI\Client\Model\HTTPValidationError',
+                        '\BasalamSDK\Model\HTTPValidationError',
                         $request,
                         $response,
                     );
@@ -794,7 +794,7 @@ class V3CategoryApi
             }
 
             return $this->handleResponseWithDataType(
-                '\OpenAPI\Client\Model\CategoryLV12Response',
+                '\BasalamSDK\Model\CategoryLV12Response',
                 $request,
                 $response,
             );
@@ -803,7 +803,7 @@ class V3CategoryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\CategoryLV12Response',
+                        '\BasalamSDK\Model\CategoryLV12Response',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -811,7 +811,7 @@ class V3CategoryApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\HTTPValidationError',
+                        '\BasalamSDK\Model\HTTPValidationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -857,7 +857,7 @@ class V3CategoryApi
      */
     public function readCategoryV3CategoriesCategoryIdGetAsyncWithHttpInfo($category_id, string $contentType = self::contentTypes['readCategoryV3CategoriesCategoryIdGet'][0])
     {
-        $returnType = '\OpenAPI\Client\Model\CategoryLV12Response';
+        $returnType = '\BasalamSDK\Model\CategoryLV12Response';
         $request = $this->readCategoryV3CategoriesCategoryIdGetRequest($category_id, $contentType);
 
         return $this->client

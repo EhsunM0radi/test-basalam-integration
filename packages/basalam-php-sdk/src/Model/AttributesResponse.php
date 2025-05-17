@@ -26,10 +26,10 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace BasalamSDK\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \BasalamSDK\ObjectSerializer;
 
 /**
  * AttributesResponse Class Doc Comment
@@ -57,7 +57,7 @@ class AttributesResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\OpenAPI\Client\Model\AttributeGroupResponse[]'
+        'data' => '\BasalamSDK\Model\AttributeGroupResponse[]'
     ];
 
     /**
@@ -295,7 +295,7 @@ class AttributesResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return \OpenAPI\Client\Model\AttributeGroupResponse[]
+     * @return \BasalamSDK\Model\AttributeGroupResponse[]
      */
     public function getData()
     {
@@ -305,7 +305,7 @@ class AttributesResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param \OpenAPI\Client\Model\AttributeGroupResponse[] $data data
+     * @param \BasalamSDK\Model\AttributeGroupResponse[] $data data
      *
      * @return self
      */

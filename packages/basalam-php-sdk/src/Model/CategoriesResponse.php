@@ -26,10 +26,10 @@
  * Do not edit the class manually.
  */
 
-namespace OpenAPI\Client\Model;
+namespace BasalamSDK\Model;
 
 use \ArrayAccess;
-use \OpenAPI\Client\ObjectSerializer;
+use \BasalamSDK\ObjectSerializer;
 
 /**
  * CategoriesResponse Class Doc Comment
@@ -57,7 +57,7 @@ class CategoriesResponse implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'data' => '\OpenAPI\Client\Model\CategoryLV12Response[]'
+        'data' => '\BasalamSDK\Model\CategoryLV12Response[]'
     ];
 
     /**
@@ -295,7 +295,7 @@ class CategoriesResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets data
      *
-     * @return \OpenAPI\Client\Model\CategoryLV12Response[]
+     * @return \BasalamSDK\Model\CategoryLV12Response[]
      */
     public function getData()
     {
@@ -305,7 +305,7 @@ class CategoriesResponse implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets data
      *
-     * @param \OpenAPI\Client\Model\CategoryLV12Response[] $data data
+     * @param \BasalamSDK\Model\CategoryLV12Response[] $data data
      *
      * @return self
      */

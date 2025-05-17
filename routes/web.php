@@ -1,15 +1,12 @@
 <?php
 
-use App\Enums\BasalamProductStatusEnums;
-use BasalamSDK\Model\UserUploadFileTypeEnum;
-use Unisa\BasalamProxy\Proxies\ProductProxy;
-
 use Illuminate\Support\Facades\Route;
-use Unisa\BasalamProxy\Adapters\DefaultSdkAdapter;
 use Unisa\BasalamProxy\Constants\BasalamFileTypesEnum;
+use Unisa\BasalamProxy\Constants\BasalamOrderStatusEnums;
+use Unisa\BasalamProxy\Constants\BasalamProductStatusEnums;
 use Unisa\BasalamProxy\Constants\BasalamProductUnitEnums;
 use Unisa\BasalamProxy\DTOs\BinaryFileDto;
-use Unisa\BasalamProxy\DTOs\CreateProductRequest;
+use Unisa\BasalamProxy\DTOs\ProductDto;
 use Unisa\BasalamProxy\Facades\Labeling;
 use Unisa\BasalamProxy\Facades\Product;
 
@@ -19,8 +16,10 @@ Route::get('/', function () {
 
 Route::get('/test-proxy',function(){
 
-    $productDTO = new CreateProductRequest(
-        'hello',
+    // dd(Product::read(22636064));
+
+    $productDTO = new ProductDto(
+        'فیگور ددپول ۲',
         BasalamProductStatusEnums::AVAILABLE,
         '50',
         BasalamProductUnitEnums::ITEM,
@@ -34,20 +33,19 @@ Route::get('/test-proxy',function(){
         500000,
         new BinaryFileDto(new SplFileObject('/home/ehsan/Downloads/bcc197a43170016e8cc943970763bd209488c46a_1709677346.jpg','r'),BasalamFileTypesEnum::PRODUCT_PHOTO),
         [],
-        new ProductAttributes(),
+        [["attribute_id"=>277,"value" => "شش در هشت","selected_values" => null]],
         null,
         [],
-        new BinaryFileDto(new SplFileObject('/home/ehsan/Downloads/58d4259c75aecd014ec175279b0e965064230037-360p.mp4','r'),BasalamFileTypesEnum::PRODUCT_VIDEO)
+        null
     );
-    $prod = new stdClass();
-    $prod->photo = new stdClass();
-    $prod->photo->file = new SplFileObject('/home/ehsan/Downloads/bcc197a43170016e8cc943970763bd209488c46a_1709677346.jpg','r');
-    $prod->photo->file_type = UserUploadFileTypeEnum::PRODUCT_PHOTO;
-        Product::create(
-            config('basalam-proxy.vendor_id'),
-            $prod
+
+    Product::create(
+        config('basalam-proxy.vendor_id'),
+        $productDTO
     );
-    // dd(app(ProductProxy::class));
+
+    // Product::getAttributes('فیگور ددپول');
+
 });
 
 Route::get('temp',function(){
