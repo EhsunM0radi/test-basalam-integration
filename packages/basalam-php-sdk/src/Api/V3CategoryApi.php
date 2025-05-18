@@ -652,12 +652,12 @@ class V3CategoryApi
             );
         }
 
-
         $headers = $this->headerSelector->selectHeaders(
             ['application/json', ],
             $contentType,
             $multipart
         );
+
 
         // for model (json/xml)
         if (count($formParams) > 0) {
@@ -690,10 +690,13 @@ class V3CategoryApi
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
 
+        $authorization = ["Authorization" => "Bearer " . $this->config->getAccessToken()];
+
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
-            $headers
+            $headers,
+            $authorization
         );
 
         $operationHost = $this->config->getHost();

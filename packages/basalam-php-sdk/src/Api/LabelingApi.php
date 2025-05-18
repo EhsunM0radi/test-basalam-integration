@@ -197,7 +197,7 @@ class LabelingApi
                     );
             }
 
-            
+
 
             if ($statusCode < 200 || $statusCode > 299) {
                 throw new ApiException(
@@ -236,7 +236,7 @@ class LabelingApi
                     $e->setResponseObject($data);
                     throw $e;
             }
-        
+
 
             throw $e;
         }
@@ -392,10 +392,13 @@ class LabelingApi
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
 
+        $authorization = ["Authorization" => "Bearer " . $this->config->getAccessToken()];
+
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
-            $headers
+            $headers,
+            $authorization
         );
 
         $operationHost = $this->config->getHost();

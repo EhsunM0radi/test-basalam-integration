@@ -419,10 +419,13 @@ class V4ProductApi
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
 
+        $authorization = ["Authorization" => "Bearer " . $this->config->getAccessToken()];
+
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
-            $headers
+            $headers,
+            $authorization
         );
 
         $operationHost = $this->config->getHost();
@@ -720,10 +723,13 @@ class V4ProductApi
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
 
+        $authorization = ["Authorization" => "Bearer " . $this->config->getAccessToken()];
+
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
-            $headers
+            $headers,
+            $authorization
         );
 
         $operationHost = $this->config->getHost();
@@ -1041,10 +1047,13 @@ class V4ProductApi
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
 
+        $authorization = ["Authorization" => "Bearer " . $this->config->getAccessToken()];
+
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
-            $headers
+            $headers,
+            $authorization
         );
 
         $operationHost = $this->config->getHost();
@@ -1333,10 +1342,13 @@ class V4ProductApi
             $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
         }
 
+        $authorization = ["Authorization" => "Bearer " . $this->config->getAccessToken()];
+
         $headers = array_merge(
             $defaultHeaders,
             $headerParams,
-            $headers
+            $headers,
+            $authorization
         );
 
         $operationHost = $this->config->getHost();
